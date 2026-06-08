@@ -1827,6 +1827,11 @@ async def run_multistep_search(query: str, user_id: int, status_updater, is_inli
     current_thoughts_var.set(None)
     
     for iteration in range(1, 4):
+        iter_time_range = None
+        if iteration == 2:
+            iter_time_range = "year"
+        elif iteration == 3:
+            iter_time_range = "month"
         current_thoughts = None
         await status_updater(
             make_status_html(
@@ -1883,7 +1888,8 @@ async def run_multistep_search(query: str, user_id: int, status_updater, is_inli
                 search_queries_state=search_queries_state,
                 iteration=iteration,
                 current_thoughts=current_thoughts,
-                progress_percent=30 if mode == "deep" else 50
+                progress_percent=30 if mode == "deep" else 50,
+                time_range=iter_time_range
             )
             
         fetched_urls_shared = set(fetched_urls)
@@ -2001,7 +2007,8 @@ async def run_multistep_search(query: str, user_id: int, status_updater, is_inli
                     search_queries_state=refined_queries_state,
                     iteration=iteration,
                     current_thoughts=current_thoughts,
-                    progress_percent=50
+                    progress_percent=50,
+                    time_range=iter_time_range
                 )
                 
             fetched_urls_shared = set(fetched_urls)
@@ -2108,7 +2115,8 @@ async def run_multistep_search(query: str, user_id: int, status_updater, is_inli
                     search_queries_state=opinion_queries_state,
                     iteration=iteration,
                     current_thoughts=current_thoughts,
-                    progress_percent=70
+                    progress_percent=70,
+                    time_range=iter_time_range
                 )
                 
             fetched_urls_shared = set(fetched_urls)
