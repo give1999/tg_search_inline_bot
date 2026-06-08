@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  inline-search-bot:
+    build: .
+    container_name: inline-search-bot
+    restart: always
+    network_mode: host
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
