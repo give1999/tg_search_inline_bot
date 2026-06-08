@@ -143,4 +143,4 @@ docker compose -f docker-compose.sum.yml up -d --build
 
 ## Лицензия
 
-Проект распространяется под лицензией MIT. Можно использовать и дорабатывать под свои задачи.
+Проект распространяется под лицензией GNU General Public License v3.0 (GPL-3.0). Подробную информацию см. в файле [LICENSE](LICENSE).
